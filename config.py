@@ -8,6 +8,13 @@ if not TOKEN:
     raise ValueError("BOT_TOKEN не найден в .env!")
 
 CHAT_LINK = "https://t.me/camorra_team_bot"
+# Раздел «Чаты» / материалы (замени на свои ссылки)
+MANUAL_LINK = "https://t.me/camorra_team_bot"  # Мануал (поставь ссылку на пост/файл/канал)
+PAYOUTS_LINK = "https://t.me/camorra_team_bot"  # Выплаты
+DOCS_LINK = "https://t.me/camorra_team_bot"     # Документы
+SPHERES_LINK = "https://t.me/camorra_team_bot"  # Сферы и направления
+TOOLS_LINK = "https://t.me/camorra_team_bot"    # Инструменты
+EXAMPLES_LINK = "https://t.me/camorra_team_bot" # Примеры переписок
 CHECKER_LINK = "https://t.me/Chekercamorra_bot"
 PARSER_LINK = "https://t.me/your_parser_link"
 
