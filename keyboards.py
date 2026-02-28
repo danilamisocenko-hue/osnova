@@ -26,6 +26,28 @@ def chats_kb(chat_link: str):
     builder.adjust(1)
     return builder.as_markup()
 
+def chats_section_kb(
+    manual_link: str,
+    team_chat_link: str,
+    payouts_link: str,
+    docs_link: str,
+    spheres_link: str,
+    tools_link: str,
+    examples_link: str,
+):
+    """Раздел «Чаты» — быстрые кнопки на материалы/ресурсы."""
+    builder = InlineKeyboardBuilder()
+    builder.button(text="📘 Мануал", url=manual_link)
+    builder.button(text="💬 Чат команды", url=team_chat_link)
+    builder.button(text="💰 Выплаты", url=payouts_link)
+    builder.button(text="📄 Документы", url=docs_link)
+    builder.button(text="🎯 Сферы и направления", url=spheres_link)
+    builder.button(text="🛠 Инструменты", url=tools_link)
+    builder.button(text="📝 Примеры переписок", url=examples_link)
+    builder.button(text="⬅️ Назад", callback_data="menu_back")
+    builder.adjust(2, 2, 2, 1, 1)
+    return builder.as_markup()
+
 def bots_kb(checker: str, parser: str):
     builder = InlineKeyboardBuilder()
     builder.button(text="🔍 Чекер", url=checker)
