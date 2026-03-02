@@ -3,41 +3,47 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-TOKEN = os.getenv("BOT_TOKEN")
-if not TOKEN:
-    raise ValueError("BOT_TOKEN не найден в .env!")
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+if not BOT_TOKEN:
+    raise ValueError("BOT_TOKEN не найден в .env")
 
-CHAT_LINK = "https://t.me/camorra_team_bot"
-# Раздел «Чаты» / материалы (замени на свои ссылки)
-MANUAL_LINK = "https://telegra.ph/Manualy-komandy-𝐶𝐴𝑀𝑂𝑅𝑅𝐴-𝑇𝐸𝐴𝑀-11-21"  # Мануал (поставь ссылку на пост/файл/канал)
-PAYOUTS_LINK = "https://t.me/+LqhNOS_Fna0wMzIy"  # Выплаты
-DOCS_LINK = "https://t.me/+c6y-N-Ng8CA2NWRl"     # Документы
-SPHERES_LINK = "https://t.me/+TOhK7La87YU1YTdl"  # Сферы и направления
-TOOLS_LINK = "https://t.me/+cicKFe3d7gdiZjll"    # Инструменты
-EXAMPLES_LINK = "https://t.me/+aqKTc9bQHho0OTFk" # Примеры переписок
-CHECKER_LINK = "https://t.me/Chekercamorra_bot"
-PARSER_LINK = "https://t.me/your_parser_link"
+# --- ОБЯЗАТЕЛЬНО ЗАПОЛНИ ---
+# ID канала (пример: -1001234567890)
+CHANNEL_ID = int(os.getenv("CHANNEL_ID", "-1000000000000"))
+# ID чата/группы команды (пример: -1009876543210)
+TEAM_CHAT_ID = int(os.getenv("TEAM_CHAT_ID", "-1000000000000"))
 
-ABOUT_TEXT = """Добро пожаловать в Проект CAMORRA!
+# Ссылки для кнопок (можно @username или https://t.me/...)
+CHANNEL_LINK = os.getenv("CHANNEL_LINK", "https://t.me/your_channel")
+TEAM_CHAT_LINK = os.getenv("TEAM_CHAT_LINK", "https://t.me/your_chat")
 
-Рады приветствовать вас в официальном канале нашего Проекта.
-Мы фокусируемся на самом актуальном и перспективном направлении рынка.
+MANUAL_LINK = os.getenv("MANUAL_LINK", "https://t.me/your_manual_post")
+PAYOUTS_LINK = os.getenv("PAYOUTS_LINK", "https://t.me/your_payouts")
+DOCS_LINK = os.getenv("DOCS_LINK", "https://t.me/your_docs")
+SPHERES_LINK = os.getenv("SPHERES_LINK", "https://t.me/your_spheres")
+TOOLS_LINK = os.getenv("TOOLS_LINK", "https://t.me/your_tools")
+EXAMPLES_LINK = os.getenv("EXAMPLES_LINK", "https://t.me/your_examples")
 
-Наша структура предлагает:
+# Админы (через запятую в .env: ADMINS=111,222,333)
+_raw = os.getenv("ADMINS", "")
+ADMINS = {int(x.strip()) for x in _raw.split(",") if x.strip().isdigit()}
 
-· Обучение для участников любого уровня (от новичков до профи).
-· Выстроенную систему действий для быстрого и гарантированного результата.
+# Если не хочешь через .env — можно прямо тут:
+# ADMINS = {7788251820, 8042059176, 1132436519}
 
-Важно: Для оптимизации работы, пожалуйста, внимательно изучите закрепленные материалы (мануал) перед обращением к администрации.
+ABOUT_TEXT = os.getenv(
+    "ABOUT_TEXT",
+    "О проекте… (тут твой текст)"
+)
 
-Желаем вам высокой продуктивности и достижения целей!"""
+# Картинки (если у тебя через file_id — оставь свои)
+MAIN_MENU_IMAGE = os.getenv("MAIN_MENU_IMAGE", "")
+PROFILE_IMAGE = os.getenv("PROFILE_IMAGE", "")
+CHATS_IMAGE = os.getenv("CHATS_IMAGE", "")
+MENTORS_IMAGE = os.getenv("MENTORS_IMAGE", "")
+BOTS_IMAGE = os.getenv("BOTS_IMAGE", "")
+ABOUT_IMAGE = os.getenv("ABOUT_IMAGE", "")
 
-ADMINS = [7788251820, 8042059176, 1132436519]
-
-MAIN_MENU_IMAGE = "AgACAgIAAxkBAAIBFWmXITLkwchxI9KLG2ueK0bH7s_OAAJCFGsbTamwSCmGnS4LGlZIAQADAgADeQADOgQ"
-PROFILE_IMAGE = "AgACAgIAAxkBAAIBE2mXISw_V0d47jvc3jhyLaUKIHw0AAJDFGsbTamwSMCGySgd7peyAQADAgADeQADOgQ"
-ABOUT_IMAGE = "AgACAgIAAxkBAAIBEWmXISmf9x3YMdHtwIsSMgGu2oxbAAI-FGsbTamwSGJovmLt-BWDAQADAgADeQADOgQ"
-CHATS_IMAGE = "AgACAgIAAxkBAAIBD2mXISWtgywZJQnjrFmrPgTboCKqAAI_FGsbTamwSIbiSpXdsTOzAQADAgADeQADOgQ"
-MENTORS_IMAGE = "AgACAgIAAxkBAAIBDWmXISHFpoxmpUB2VF2mTNEZ7xV9AAJAFGsbTamwSFrnGTTGM1k0AQADAgADeQADOgQ"
-BOTS_IMAGE = "AgACAgIAAxkBAAIBC2mXIQfgIsoabShUHrkSGnepU_76AAJBFGsbTamwSO39UhADcbJVAQADAgADeQADOgQ"
-
+# Боты/ссылки если надо
+CHECKER_LINK = os.getenv("CHECKER_LINK", "")
+PARSER_LINK = os.getenv("PARSER_LINK", "")
